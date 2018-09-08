@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Image List</title>
+
+    <!-- Header -->
+    <%include layouts/head %>
+
+    <style>
+        #image_item {
+            position: relative;
+        }
+        #image_item a {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    </style>
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    <div class="s-pageheader">
+        <%include layouts/header %>
+    </div> <!-- end s-pageheader -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    Image List:
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date"><%= message %></li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                    <img src=""  
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full">
+
+                <!-- Content_main -->
+                <% for(var i = 0; i<images.length; i++) { %>
+                <div id="image_item">
+                    <img src="<%= images[i].url %>"  
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                    <a class="btn close" aria-label="Close" href="/image/delete/<%= images[i]._id %>"
+                        onclick="return confirm('are you sure?')" >
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <pre><%= images[i].url %></pre>
+                <% } %>
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+        <br/>
+        <br/>
+
+    </section> <!-- s-content -->
+
+    <!-- Footer -->
+    <%include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

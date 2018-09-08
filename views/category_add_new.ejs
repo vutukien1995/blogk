@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- Basic page needs
+    ================================================== -->
+    <title><%= title %></title>
+
+    <% include layouts/head.ejs %>
+
+</head>
+
+<body id="top">
+
+    <!-- Header
+    ================================================== -->
+    <div class="s-pageheader">
+
+    <% include layouts/header %> 
+
+    </div>
+    <!-- /Header -->
+
+    <section class="s-content s-content--narrow">
+
+        <div class="row">
+
+            <div class="col-full s-content__main">
+
+                <%if(message.length>0){%>
+                <div class="alert-box alert-box--success hideit">
+                    <p><%= message %></p>
+                    <i class="fa fa-times alert-box__close"></i>
+                </div> <!-- end success -->
+                <%}%>
+
+                <h3>Upload Image:</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(var i=0; i<categories.length; i++){%>
+                        <tr>
+                            <td><%=categories[i].name%></td>
+                            <td>
+                                <a class="btn" href="/category/delete/<%=categories[i]._id%>" 
+                                    style="float: right;"
+                                    onclick="return confirm('are you sure?')">delete
+                                </a>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+
+                <h3>Add new:</h3>
+                <form action="/category/add_new" method="post">
+                    <td>
+                        <input class="full-width" type="text" name="name" placeholder="Name" required />
+                        <input class="full-width" type="text" name="description" placeholder="Description" required />
+                    </td>
+                    <td>
+                        <input type="submit" value="Add" />
+                    </td>
+                </form>
+
+            </div> <!-- end s-content__main -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <% include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

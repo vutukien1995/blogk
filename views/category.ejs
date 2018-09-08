@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- Basic page needs
+    ================================================== -->
+    <title><%= title %></title>
+
+    <% include layouts/head.ejs %>
+
+</head>
+
+<body id="top">
+
+    <!-- Header
+    ================================================== -->
+    <div class="s-pageheader">
+
+    <% include layouts/header %> 
+
+    </div>
+    <!-- /Header -->
+
+     <!-- s-content
+    ================================================== -->
+    <section class="s-content">
+
+        <div class="row narrow">
+            <div class="col-full s-content__header" data-aos="fade-up">
+                <h1>Category: <%=category.name%></h1>
+
+                <p class="lead"><%=category.description%></p>
+            </div>
+        </div>
+        
+        <div class="row masonry-wrap">
+            <div class="masonry">
+
+                <div class="grid-sizer"></div>
+
+                <!-- Articles -->
+                <% if ( 1==1 ) { %>
+                <% for(var i=0; i<posts.length; i++) { %>
+
+                <!-- Pep talk -->
+                <% if( i==1 ) { %>
+                <article class="masonry__brick entry format-quote" data-aos="fade-up">
+                    <div class="entry__thumb">
+                        <blockquote>
+                                <p>Color my life with chaos of trouble.</p>
+
+                                <cite>Koas</cite>
+                        </blockquote>
+                    </div>
+                </article> <!-- end article -->
+                <% } %>
+                <!-- /Pep talk -->
+
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        
+                    <div class="entry__thumb">
+                        <a href="/post/show/<%=posts[i]._id%>" class="entry__thumb-link">
+                            <img src="<%=  posts[i].image %>" alt="">
+                        </a>
+                    </div>
+    
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            
+                            <div class="entry__date">
+                                <a href="/post/show/<%=posts[i]._id%>"><%= posts[i].dateOfCreate.toLocaleDateString() %></a>
+                            </div>
+                            <h1 class="entry__title"><a href="/post/show/<%=posts[i]._id%>"><%= posts[i].title %></a></h1>
+                            
+                        </div>
+                        <div class="entry__excerpt">
+                            <%- posts[i].content %> ...
+                        </div>
+                        <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                <% for(var j=0; j<posts[i].categories.length; j++) { %>
+                                    <a href="#"><%= posts[i].categories[j] %></a>
+                                <% } %>
+                            </span>
+                        </div>
+                    </div>
+    
+                </article> <!-- end article -->
+
+                <% } %>
+                <% } %>
+                <!-- /Articles -->
+
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
+
+        <div class="row">
+            <div class="col-full">
+                <nav class="pgn">
+                    <ul>
+                        <li><a class="pgn__prev" href="#0">Prev</a></li>
+                        <% for( var i = 1; i<=pages; i++) { %>
+                            <li><a class="pgn__num <% if(i===page){ %>current<% } %>" href="/category/<%=category%>/<%=i-1%>"><%= i %></a></li>
+                        <% } %>
+                        <li><a class="pgn__next" href="#0">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </section> <!-- s-content -->
+
+
+    <!-- s-footer
+    ================================================== -->
+    <% include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

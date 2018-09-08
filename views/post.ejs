@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title><%= post.title %></title>
+
+    <!-- Header -->
+    <%include layouts/head %>
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    <div class="s-pageheader">
+        <%include layouts/header %>
+    </div> <!-- end s-pageheader -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    <%= post.title %>
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date"><%= post.dateOfCreate.toLocaleDateString() %></li>
+                    <li class="cat">
+                        In
+                        <% for(var i=0; i<post.categories.length; i++) { %>
+                        <a href="#0"><%= post.categories[i] %></a>
+                        <% } %>
+                    </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                    <img src="<%= post.image %>"  
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+
+                <!-- Content_main -->
+                <%- post.content %>
+
+                <%if(user){%>
+                    <a class="btn" href="/post/update/<%=post._id%>">Modify</a>
+                <%}%>
+
+                <!-- Tags -->
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        <a href="#0">orci</a>
+                        <a href="#0">lectus</a>
+                        <a href="#0">varius</a>
+                        <a href="#0">turpis</a>
+                    </span>
+                </p> <!-- end s-content__tags -->
+
+                <!-- Author -->
+                <div class="s-content__author">
+                    <img src="/images/avatars/user-03.jpg" alt="">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">Vũ Tự Kiên</a>
+                        </h4>
+                    
+                        <p>Tôi là Kiên. Tôi là 1 junior web developers. Tôi chẳng có gì thú vị cả. Đơn giản là tôi đang tìm kiếm nó.
+                        </p>
+
+                        <ul class="s-content__author-social">
+                           <li><a href="#0">Facebook</a></li>
+                           <li><a href="#0">Twitter</a></li>
+                           <li><a href="#0">GooglePlus</a></li>
+                           <li><a href="#0">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="s-content__pagenav">
+                    <div class="s-content__nav">
+                        <div class="s-content__prev">
+                            <a href="#0" rel="prev">
+                                <span>Previous Post</span>
+                                Tips on Minimalist Design 
+                            </a>
+                        </div>
+                        <div class="s-content__next">
+                            <a href="#0" rel="next">
+                                <span>Next Post</span>
+                                Less Is More 
+                            </a>
+                        </div>
+                    </div>
+                </div> <!-- end s-content__pagenav -->
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+        <br/>
+        <br/>
+
+    </section> <!-- s-content -->
+
+    <!-- Footer -->
+    <%include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

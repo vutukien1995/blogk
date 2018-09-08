@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- Basic page needs
+    ================================================== -->
+    <title><%= title %></title>
+
+    <% include layouts/head.ejs %>
+
+</head>
+
+<body id="top">
+
+    <!-- Header
+    ================================================== -->
+    <div class="s-pageheader">
+
+    <% include layouts/header %> 
+
+    </div>
+    <!-- /Header -->
+
+    <section class="s-content s-content--narrow">
+
+        <div class="row">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    Create new a Post.
+                </h1>
+            </div> <!-- end s-content__header -->
+
+            <div class="col-full s-content__main">
+
+                <h3>Upload Image.</h3>
+
+                <form name="cForm" id="cForm" method="post" action="/image/upload" enctype="multipart/form-data">
+                    <fieldset>
+                        <div class="form-field">
+                            <input name="image" type="file" id="cName" class="full-width" placeholder="file" value="">
+                        </div>
+
+                        <button type="submit" class="submit btn btn--primary full-width">Submit</button>
+
+                    </fieldset>
+                </form> <!-- end form -->
+
+
+            </div> <!-- end s-content__main -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <% include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

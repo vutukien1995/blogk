@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summernote</title>
+
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+</head>
+<body>
+
+    <div class="col-md-10 col-md-offset-1" >
+        <br/><br/>
+        <form method="post" action="/post/create">
+        <fieldset>
+        <div class="form-field">
+            <input name="title" type="text" class="form-control" placeholder="Title" value="">
+        </div>
+        <div class="form-field">
+            <input name="image" type="text" class="form-control" placeholder="Url" value="">
+        </div>
+
+        <textarea name="content" id="summernote" class="full-width" placeholder="Content" ></textarea>
+
+        <h4>Categories: </h4>
+        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Daylife"> Daylife </label>
+        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Health"> Health </label>
+        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Music"> Music </label>
+        <br/>
+        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Travel"> Travel </label>
+        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Technology"> Technology </label>
+        <br/>
+        <br/>
+
+        <button type="submit" class="submit btn btn-primary">Submit</button>
+
+        </fieldset>
+        </form> <!-- end form -->
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
+</body>
+</html>

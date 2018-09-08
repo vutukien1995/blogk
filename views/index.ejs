@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <title>Blog K</title>
+
+    <!-- Header -->
+    <%include layouts/head %>
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    <section class="s-pageheader s-pageheader--home">
+
+        <!-- Header -->
+        <%include layouts/header %>
+        <!-- /Header -->
+
+        <div class="pageheader-content row">
+            <div class="col-full">
+
+                <div class="featured">
+
+                    <% if(posts[0]){ %>
+                    <div class="featured__column featured__column--big">
+                        <div class="entry" style="background-image:url('<%= posts[0].image %>');">
+                            
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="#0">Music</a></span>
+
+                                <h1><a href="/post/show/<%= posts[0]._id %>" title=""><%= posts[0].title %></a></h1>
+
+                                <div class="entry__info">
+                                    <a href="#" class="entry__profile-pic">
+                                        <img class="avatar" src="/images/avatars/user-03.jpg" alt="">
+                                    </a>
+
+                                    <ul class="entry__meta">
+                                        <li><a href="#"><%= posts[0].user %></a></li>
+                                        <li><%= posts[0].dateOfCreate.toLocaleDateString() %></li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+                            
+                        </div> <!-- end entry -->
+                    </div> <!-- end featured__big -->
+                    <% } %>
+
+                    <div class="featured__column featured__column--small">
+
+                        <% if(posts[1]){ %>
+                        <div class="entry" style="background-image:url('<%= posts[1].image %>');">
+                            
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="#0">Management</a></span>
+
+                                <h1><a href="/post/show/<%= posts[1]._id %>" title=""><%= posts[1].title %></a></h1>
+
+                                <div class="entry__info">
+                                    <a href="#" class="entry__profile-pic">
+                                        <img class="avatar" src="/images/avatars/user-03.jpg" alt="">
+                                    </a>
+
+                                    <ul class="entry__meta">
+                                        <li><a href="#"><%= posts[1].user %></a></li>
+                                        <li><%= posts[1].dateOfCreate.toLocaleDateString() %></li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+                          
+                        </div> <!-- end entry -->
+                        <% } %>
+
+                        <% if(posts[2]){ %>
+                        <div class="entry" style="background-image:url('<%= posts[2].image %>');">
+
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="#0">LifeStyle</a></span>
+
+                                <h1><a href="/post/show/<%= posts[2]._id %>" title=""><%= posts[2].title %></a></h1>
+
+                                <div class="entry__info">
+                                    <a href="#" class="entry__profile-pic">
+                                        <img class="avatar" src="/images/avatars/user-03.jpg" alt="">
+                                    </a>
+
+                                    <ul class="entry__meta">
+                                        <li><a href="#"><%= posts[2].user %></a></li>
+                                        <li><%= posts[2].dateOfCreate.toLocaleDateString() %></li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+
+                        </div> <!-- end entry -->
+                        <% } %>
+
+                    </div> <!-- end featured__small -->
+                </div> <!-- end featured -->
+
+            </div> <!-- end col-full -->
+        </div> <!-- end pageheader-content row -->
+
+    </section> <!-- end s-pageheader -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content">
+        
+        <div class="row masonry-wrap">
+            <div class="masonry">
+
+                <div class="grid-sizer"></div>
+
+                <!-- Articles -->
+                <% if ( 1==1 ) { %>
+                <% for(var i=0; i<posts.length; i++) { %>
+
+                <!-- Pep talk -->
+                <% if( i==1 ) { %>
+                <article class="masonry__brick entry format-quote" data-aos="fade-up">
+                    <div class="entry__thumb">
+                        <blockquote>
+                                <p>Color my life with chaos of trouble.</p>
+
+                                <cite>Koas</cite>
+                        </blockquote>
+                    </div>
+                </article> <!-- end article -->
+                <% } %>
+                <!-- /Pep talk -->
+
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        
+                    <div class="entry__thumb">
+                        <a href="/post/show/<%=posts[i]._id%>" class="entry__thumb-link">
+                            <img src="<%=  posts[i].image %>" alt="">
+                        </a>
+                    </div>
+    
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            
+                            <div class="entry__date">
+                                <a href="/post/show/<%=posts[i]._id%>"><%= posts[i].dateOfCreate.toLocaleDateString() %></a>
+                            </div>
+                            <h1 class="entry__title"><a href="/post/show/<%=posts[i]._id%>"><%= posts[i].title %></a></h1>
+                            
+                        </div>
+                        <div class="entry__excerpt">
+                            <%- posts[i].content %> ...
+                        </div>
+                        <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                <% for(var j=0; j<posts[i].categories.length; j++) { %>
+                                    <a href="#"><%= posts[i].categories[j] %></a>
+                                <% } %>
+                            </span>
+                        </div>
+                    </div>
+    
+                </article> <!-- end article -->
+
+                <% } %>
+                <% } %>
+                <!-- /Articles -->
+
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
+
+        <div class="row">
+            <div class="col-full">
+                <nav class="pgn">
+                    <ul>
+                        <li><a class="pgn__prev" href="#0">Prev</a></li>
+                        <% for( var i = 1; i<=pages; i++) { %>
+                            <li><a class="pgn__num <% if(i===page){ %>current<% } %>" href="/<%=i-1%>"><%= i %></a></li>
+                        <% } %>
+                        <li><a class="pgn__next" href="#0">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </section> <!-- s-content -->
+
+    <!-- Footer -->
+    <%include layouts/footer %>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>
