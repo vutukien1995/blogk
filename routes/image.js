@@ -31,7 +31,8 @@ router.post('/upload', function(req, res){
     let IMAGE_KEY = "image";
     let PREFIX_NAME = IMAGE_KEY+'_';
     let FILE_PATH = "public/uploads/";
-    let STATIC_URL = req.protocol + '://' + req.get('host') + '/uploads/' ;
+    // let STATIC_URL = req.protocol + '://' + req.get('host') + '/uploads/';
+    let STATIC_URL = "/uploads/";
     
     // Config image upload
     let storage = multer.diskStorage({
