@@ -17,7 +17,7 @@ router.get('/:page', async function(req, res) {
         var options = {
             sort: { dateOfCreate: -1 },
             offset: parseInt(page),
-            limit: 5
+            limit: 10
         };
 
         var categories = await Category.find({}).exec();

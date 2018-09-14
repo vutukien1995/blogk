@@ -58,10 +58,12 @@
                 <div id="image_item">
                     <img src="<%= images[i].url %>"  
                          sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                    <%if(user){%>
                     <a class="btn close" aria-label="Close" href="/image/delete/<%= images[i]._id %>"
                         onclick="return confirm('are you sure?')" >
                         <span aria-hidden="true">&times;</span>
                     </a>
+                    <%}%>
                 </div>
                 <pre><%= images[i].url %></pre>
                 <% } %>

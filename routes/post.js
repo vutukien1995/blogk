@@ -79,6 +79,8 @@ router.get('/update/:id', async function(req, res){
 	try {
 		var categories = await Category.find({}).exec();
 
+		var posts = await Post.find({}).exec();
+
 		Post.findById(req.params.id).exec(function(err, post) {
 			if(err) return res.send(err);
 
@@ -87,7 +89,8 @@ router.get('/update/:id', async function(req, res){
 				title: 'Post',
 				tab: 'blog',
 				categories: categories,
-				post: post
+				post: post,
+				posts: posts
 			});
 		});
 	} catch (err) {

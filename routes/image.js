@@ -79,6 +79,7 @@ router.get('/list', async function(req, res){
 				title: 'Upload image',
 				tab: 'blog',
 				categories: categories,
+				user: req.user,
 				message: req.flash('message'),
 				images: images
 			});
