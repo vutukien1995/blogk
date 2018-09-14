@@ -41,7 +41,7 @@ router.post('/create', function(req, res){
 	post.save(function(err, newPost){
 		if(err) res.send(err);
 
-		res.redirect('/post/'+newPost._id);
+		res.redirect('/post/show/'+newPost._id);
 	});
 });
 

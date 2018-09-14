@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Summernote</title>
+    <meta charset="UTF-8">
+    <title>Summernote</title>
 
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="/js/jquery-3.2.1.min.js"></script> 
+    <script src="/bootstrap/js/bootstrap.js"></script>
 
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <link href="/css/summernote.css" rel="stylesheet">
+    <script src="/js/summernote.js"></script>
 
 </head>
 <body>
@@ -28,12 +28,18 @@
         <textarea name="content" id="summernote" class="full-width" placeholder="Content" ></textarea>
 
         <h4>Categories: </h4>
-        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Daylife"> Daylife </label>
-        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Health"> Health </label>
-        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Music"> Music </label>
+        <%for(var i=0; i<categories.length; i++){%>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="categories" value="<%=categories[i].name%>" 
+          > <%=categories[i].name%> 
+        </label>
+
+        <%if((i+1)%3==0){%>
+          <br/>
+        <%}%>
+        <%}%>
         <br/>
-        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Travel"> Travel </label>
-        <label class="checkbox-inline"><input type="checkbox" name="categories" value="Technology"> Technology </label>
+        <br/>
         <br/>
         <br/>
 
