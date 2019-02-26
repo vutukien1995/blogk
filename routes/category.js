@@ -9,7 +9,7 @@ var Category = require('../models/Category');
  */
 router.get('/:category/:page', async function(req, res){
     try {
-        page = req.params.page;
+        var page = req.params.page;
         
         var categories = await Category.find({}).exec();
         var category = await Category.findOne({ name: req.params.category }).exec();
@@ -51,6 +51,45 @@ router.get('/:category/:page', async function(req, res){
     }
 });
 
+/**
+ * Search port
+ */
+router.get('/search_post', async function(req, res){
+    try {
+        var key = req.query.key;
+        
+        var categories = await Category.find({}).exec();
+
+        Post.find({ $text: { $search: key } }).
+        exec(function (err, result) {
+            //if (err) return res.send(err);
+            console.log(result);
+            var posts = result;
+
+            posts.forEach(function(post) {
+                var str = post.content;
+                if(str) post.content = str.slice(0, 120);
+            });
+
+            res.render('category', {
+                title: '',
+                tab: 'categories',
+                categories: categories,
+                category: '',
+                posts: posts,
+                limit: result.limit,
+                pages: 0,
+                user: req.user
+            });
+        });
+    } catch (err) {
+        res.send({
+            name: err.name,
+            message: err.message
+        });
+    }
+});
+
 router.get('/add_new', async function(req, res){
     try {
         var categories = await Category.find({}).exec();
@@ -73,7 +112,6 @@ router.get('/add_new', async function(req, res){
     }
 
 });
-
 router.post('/add_new', function(req, res){
 
     var category = new Category({

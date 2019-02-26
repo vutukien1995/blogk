@@ -94,19 +94,21 @@
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
 
+        <% if(pages >= 2) { %>
         <div class="row">
             <div class="col-full">
                 <nav class="pgn">
                     <ul>
                         <li><a class="pgn__prev" href="#0">Prev</a></li>
                         <% for( var i = 1; i<=pages; i++) { %>
-                            <li><a class="pgn__num <% if(i===page){ %>current<% } %>" href="/category/<%=category%>/<%=i-1%>"><%= i %></a></li>
+                            <li><a class="pgn__num <% if(i===page){ %>current<% } %>" href="/category/<%=category.name%>/<%=i-1%>"><%= i %></a></li>
                         <% } %>
                         <li><a class="pgn__next" href="#0">Next</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
+        <% } %>
 
     </section> <!-- s-content -->
 
